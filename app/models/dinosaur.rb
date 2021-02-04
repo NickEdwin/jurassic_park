@@ -3,5 +3,5 @@ class Dinosaur < ApplicationRecord
   validates :species, presence: true
   validates :food_type, presence: true
 
-  # belongs_to :cages
+  belongs_to :cage
 end
