@@ -6,5 +6,8 @@ RSpec.describe Dinosaur, type: :model do
     it { should validate_presence_of :species }
     it { should validate_presence_of :food_type }
 
+    describe 'relationships' do
+      it { should belong_to :cage }
+    end
   end
 end
