@@ -1,5 +1,15 @@
 require 'simplecov'
-SimpleCov.start
+
+SimpleCov.start 'rails' do
+  add_filter '/bin/'
+  add_filter '/app/controllers/application_controller.rb'
+  add_filter '/app/channels/'
+  add_filter '/app/jobs/'
+  add_filter '/app/mailers/'
+  add_filter '/db/'
+  add_filter '/spec/' # for rspec
+  add_filter 'app/models/application_record.rb'
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
