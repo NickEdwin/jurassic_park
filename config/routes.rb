@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       patch '/cages/:id', to: 'cages#update'
 
       post '/dinosaurs', to: 'dinosaurs#create'
+      get '/dinosaurs', to: 'dinosaurs#index'
     end
   end
 end
