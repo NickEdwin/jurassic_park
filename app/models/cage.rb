@@ -20,11 +20,12 @@ class Cage < ApplicationRecord
     self.power_status == "DOWN"
   end
 
-  # check for same species of carnivores? OR mixing herbivores and carnivores !
+  # first check for food type to avoid mixing herbivores and carnivores
+  # then check that if they are a carnivore theyre the same species
   def carnivores?(dino)
     if self.dinosaurs.any?
-      return true if self.dinosaurs.any? { |in_cage| in_cage.food_type != dino[:food_type] } ||
-      self.dinosaurs.any? { |in_cage| in_cage.species != dino[:species] }
+      self.dinosaurs.any? { |in_cage| in_cage.food_type != dino[:food_type] } ||
+      (self.dinosaurs[0].food_type == "Carnivore" && self.dinosaurs.any? { |in_cage| in_cage.species != dino[:species] } )
     end
   end
 end
