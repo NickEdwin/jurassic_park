@@ -19,6 +19,15 @@ class Api::V1::DinosaursController < ApplicationController
     end
   end
 
+  def index
+    dinos = Dinosaur.where(species: params[:species])
+    if dinos.any?
+      render json: DinosaurSerializer.new(dinos)
+    else
+      render json: {"data":{"errors": "No dinosaurs in system with species #{params[:species]}"}}, status: 400
+    end
+  end
+
   private
 
   def dino_params
