@@ -38,9 +38,11 @@ describe "API V1 Cages", type: 'request' do
         second_cage = Cage.last
 
         json = JSON.parse(response.body, symbolize_names: true)
-        require"pry"; binding.pry
+
         expect(json[:data].length).to eq(2)
         expect(json[:data][0][:id]).to eq(first_cage.id.to_s)
+        expect(json[:data][0][:attributes][:dinosaurs][0][:id]).to eq(@dino1.id)
+        expect(json[:data][0][:attributes][:dinosaurs][0][:name]).to eq(@dino1.name)
         expect(json[:data][1][:id]).to eq(second_cage.id.to_s)
       end
     end
