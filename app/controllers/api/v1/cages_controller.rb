@@ -28,6 +28,16 @@ class Api::V1::CagesController < ApplicationController
     end
   end
 
+  def update
+    cage = Cage.find(params[:id])
+    if cage.dinosaurs.any?
+      render json: {"data":{"errors": "Can not power down a cage with dinosaurs in it!"}}, status: 400
+    else
+      cage.update(cage_params)
+      render json: CageSerializer.new(cage)
+    end
+  end
+
   private
 
   def cage_params
