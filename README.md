@@ -57,6 +57,4 @@ Fast JSON API used for JSON responses.
 
 ## Next Steps  
 Current test coverage is at 93.33% - Need to make that 100!   
-Add seeds to db (oops!)  
 Add GET for return of a single Dinosaur.  
-Double check species placements of dinosaurs in cage method - looks like herbivores cant be mixed.  
